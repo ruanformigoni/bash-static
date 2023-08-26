@@ -1,0 +1,36 @@
+--- a/shell.c	2023-08-26 15:33:07.978220662 -0300
++++ b/shell.c	2023-08-26 15:39:51.038249472 -0300
+@@ -1156,7 +1156,15 @@
+ 	  maybe_execute_file (SYS_BASHRC, 1);
+ #  endif
+ #endif
+-	  maybe_execute_file (bashrc_file, 1);
++    char* ptr_env_bashrc = getenv("BASHRC_FILE");
++    if ( ptr_env_bashrc )
++    {
++	    maybe_execute_file (ptr_env_bashrc, 1);
++    }
++    else
++    {
++	    maybe_execute_file (bashrc_file, 1);
++    } // else
+ 	  return;
+ 	}
+     }
+@@ -1241,7 +1249,15 @@
+ 	  maybe_execute_file (SYS_BASHRC, 1);
+ #  endif
+ #endif
+-	  maybe_execute_file (bashrc_file, 1);
++    char* ptr_env_bashrc = getenv("BASHRC_FILE");
++    if ( ptr_env_bashrc )
++    {
++	    maybe_execute_file (ptr_env_bashrc, 1);
++    }
++    else
++    {
++	    maybe_execute_file (bashrc_file, 1);
++    } // else
+ 	}
+       /* sh */
+       else if (act_like_sh && privileged_mode == 0 && sourced_env++ == 0)
