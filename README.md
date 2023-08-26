@@ -2,6 +2,11 @@
 
 Because we all need the most static bash we can get in this world.
 
+## Modifications from this fork
+
+It is now possible to use the environment variable `BASHRC_FILE` to set the path
+to a custom `.bashrc` file.
+
 ## Getting
 
 Download from the Releases section or run `./build.sh`.
