@@ -1,7 +1,7 @@
-FROM ubuntu:latest
+FROM alpine:latest
 
 # Install deps
-RUN apt-get update && apt-get install autoconf bison build-essential curl gpg git -y
+RUN apk update && apk add alpine-sdk gnupg git bash autoconf bison
 
 # Fetch source
 RUN git clone https://github.com/ruanformigoni/bash-static.git
