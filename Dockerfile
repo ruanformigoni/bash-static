@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Install deps
-RUN apk update && apk add alpine-sdk gnupg git bash autoconf bison
+RUN apk update && apk add alpine-sdk gnupg git bash autoconf bison upx
 
 # Fetch source
 RUN git clone https://github.com/ruanformigoni/bash-static.git
@@ -14,3 +14,6 @@ RUN ./build.sh linux "$(uname -m)"
 # Copy static binary
 RUN mkdir -p dist
 RUN cp releases/bash dist/bash
+
+# Compress
+RUN upx --ultra-brute --no-lzma dist/bash
