@@ -15,5 +15,8 @@ RUN ./build.sh linux "$(uname -m)"
 RUN mkdir -p dist
 RUN cp releases/bash dist/bash
 
+# Strip
+RUN strip -s -R .comment -R .gnu.version --strip-unneeded dist/bash
+
 # Compress
 RUN upx --ultra-brute --no-lzma dist/bash
